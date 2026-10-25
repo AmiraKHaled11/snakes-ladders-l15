@@ -96,7 +96,7 @@ const COL=["#dc2626","#2563eb","#eab308","#7c3aed"];
 const KEY="snl-g6-l15-scores";
 let N=2,cur=0,P=[1,1,1,1],Sc=[0,0,0,0],used={},busy=false,waiting=false,lastOk=false,from=1,corr=0;
 const $=id=>document.getElementById(id),st=$("stage");
-function fit(){st.style.transform="scale("+Math.min(innerWidth/1920,innerHeight/1080)+")"}
+function fit(){const w=innerWidth,h=innerHeight;if(h>w*1.1){st.style.transform="rotate(90deg) scale("+Math.min(h/1920,w/1080)+")"}else st.style.transform="scale("+Math.min(w/1920,h/1080)+")"}
 addEventListener("resize",fit);fit();
 function loadSc(){try{let s=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(s))Sc=[0,1,2,3].map(i=>s[i]|0)}catch(e){Sc=[0,0,0,0]}}
 function saveSc(){try{localStorage.setItem(KEY,JSON.stringify(Sc))}catch(e){}}
